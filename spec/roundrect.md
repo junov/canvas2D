@@ -25,7 +25,7 @@ interface mixin CanvasPath {
 };
 ```
 
-`radius` specifies the radius of corners. Each corner is represented by a single radius.
+`radii` specifies the radius of corners. Each corner is represented by a single radius.
 
 If `radii.length == 1` then all 4 corners have the same length.
 
@@ -35,9 +35,9 @@ If `radii.length == 3` then the first value applies to the top-left corner, the 
 
 If `radii.length == 4` then each corner is specified, in order: top-left, top-right, bottom-right, bottom-left.
 
-If `w` and `h` are both greater than  or equal to 0, or if both are smaller than 0, then the primitive is drawn clockwise. Otherwise, it is drawn conterclockwise.
+If `width` and `height` are both greater than  or equal to 0, or if both are smaller than 0, then the primitive is drawn clockwise. Otherwise, it is drawn conterclockwise.
 
-When `w` is negative, the rounded rectangle is flipped horizontally, which means that the radius values that apply to the left corners, are actual used on the right and vice versa. Similarly, when `h` is negative, the rounded rect is flipped vertically.
+When `width` is negative, the rounded rectangle is flipped horizontally, which means that the radius values that apply to the left corners, are actually used on the right and vice versa. Similarly, when `height` is negative, the rounded rect is flipped vertically.
 
 When a value `r` in `radii` is a `DOMPoint`, the corresponding corner(s) are drawn as elliptical arcs whose x and y radii are equal to `r.x` and `r.y`, respecively.
 
@@ -47,9 +47,11 @@ When the sum of the radii of two corners of the same edge is greater than the le
 
 If a value in `radii` is a negative number, then roudRect() throws an `IndexSizeError` DOM Exception.
 
-If a value in `radii` is a `DOMPoint` whose `x` or `y` attributes are negative numbers, then roundRect() throws an `IndexSizeError` DOM Exception.
+If a value in `radii` is a `DOMPoint` whose `x` or `y` attributes are negative numbers, then the `roundRect` method throws an `IndexSizeError` DOM Exception.
 
-If any of `x`, `y`, `width` or `height` ar non-finite numbers, or if a value in radii is a non-finite number, or if a value of `radii` is a DOMPoint who `x` or `y` attributes are non-finite numbers, the roundRect aborts without throwing an exception and without adding anything to the current path.
+If any of `x`, `y`, `width` or `height` ar non-finite numbers, or if a value in radii is a non-finite number, or if a value of `radii` is a DOMPoint whose `x` or `y` attributes are non-finite numbers, then the `roundRect` method aborts without throwing an exception and without adding anything to the current path.
+
+If the length of `radii` is smaller than 1 or greater than 4, the `roundRect` throws an `IndexSizeError` DOM Exception.
 
 
 ### Open issues and questions
