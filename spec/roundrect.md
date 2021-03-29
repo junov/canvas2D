@@ -25,7 +25,7 @@ interface mixin CanvasPath {
 };
 ```
 
-`radius` specifies the radius of corners. Each corner is represented by a single radius.
+`radii` specifies the radius of corners. Each corner is represented by a single radius.
 
 If `radii.length == 1` then all 4 corners have the same length.
 
